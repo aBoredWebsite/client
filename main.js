@@ -190,6 +190,7 @@ $("#loginButton").click(function(){
       });
 
 
+      
 function getBoredCard(){
   console.log('masuks');
   $('#bored').empty()
@@ -210,15 +211,16 @@ function getBoredCard(){
 function setBoredCard(activity,participant,price,type){
   let newPrice = price*10
   $('#bored').append(`
-  <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">${activity}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Type: ${type}</h6>
-        <p class="card-text">Participants: ${participant}</p>
-        <p class="card-text">Price: ${newPrice}</p>
-        <a id="getMoreBored" class="card-link" style="cursor: pointer">Get another activity</a>
-      </div>
-    </div>
+  <div class='mx-auto d-flex flex-column align-items-center justify-content-center' style="height: 300px; width: 60%;">
+                        <h4 style="color: white; text-align: center;margin-bottom: 3rem;font-size: 1.5rem; font-style:italic">  Maybe you can : </h4>
+                        <h2 style="color: white; text-align: center;margin-bottom: 1rem;font-size: 3rem;">"${activity}"</h2>
+                        <h4 style="color: white; text-align: center;font-size: 1rem; font-style:italic">  participant : ${participant}</h4>
+                        <h4 style="color: white; text-align: center;font-size: 1rem; font-style:italic">  type : ${type}</h4>
+                        <h4 style="color: white; text-align: center;font-size: 1rem; font-style:italic">  price : ${newPrice}</h4>
+                        <br>
+                        <a id = getMoreBored href="#" class="btn btn-outline-light" style="padding: 0.375rem 2.75rem; margin:10px;border-radius: 2.25rem;font-size: 1.3rem;line-height: 2.5;width: 300px;">Get another activity</a>
+                        
+                    </div>
   `)
   $('#getMoreBored').click(()=>{
     getBoredCard()
@@ -244,15 +246,12 @@ function getJokeCard(){
 
 function setJokeCard(setup,punchline){
   $('#joke').append(`
-  <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">${setup}</h5>
-        <button type="button" class="btn btn-primary btn-sm" id="reveal">Punchline!</button>
-        <h6 id="punchline" style="display:none">${punchline}</h6>
-        </br>
-        <a id="getMoreJoke" class="card-link" style="cursor:pointer">want to hear more joke?</a>
-      </div>
-    </div>
+                        <h4 id ="question" style="color:rgb(43, 43, 43); text-align: center;font-size: 3rem; margin: 50px;">${setup}</h4>
+                        <center><button type="button" class="btn btn-primary btn-sm" id="reveal">Punchline!</button></center>
+                        <center><h4 id="punchline" style="display:none; color:"yellow">"${punchline}"</h4></center>
+                        </br>
+                        <center><h4 id="getMoreJoke" class="card-link" style="cursor:pointer; color :rgb(17, 85, 102)">want to hear more joke?</h4></center>
+                        <h4 id="punchline" style="display:none; color:rgb(55, 134, 148)">${punchline}</h4>
   `)
   $('#reveal').click(()=>{
     $('#punchline').show()
@@ -282,15 +281,15 @@ function getQuoteCard(){
 
 function setQuoteCard(author,body){
   $('#quote').append(`
-  <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">${body}</h5>
-        <p class="card-text">- ${author}</p>
-        <a id="getMoreQuote" class="card-link" style="cursor:pointer">get more quote</a>
-      </div>
-    </div>
+  <div class='mx-auto d-flex flex-column align-items-center justify-content-center' style="height: 300px; width: 60%;">
+          <h2 style="color: white; text-align: center;margin-bottom: 3rem;font-size: 3rem;">${body}</h2>
+          <h4 style="color: white; text-align: center;margin-bottom: 3rem;font-size: 1.5rem; font-style:italic"> - ${author} - </h4>
+          <a id = getMoreQuote href="#" class="btn btn-outline-light" style="padding: 0.375rem 2.75rem; margin:10px;border-radius: 2.25rem;font-size: 1.3rem;line-height: 2.5;width: 300px;">More Quotes</a>
+          
+  </div>
   `)
   $('#getMoreQuote').click(()=>{
     getQuoteCard()
   })
 }
+
