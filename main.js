@@ -5,9 +5,15 @@ $(document).ready(function(){
       });
       $("#question1").show()
   });
+
+  getBoredCard()
+  getJokeCard()
+  getQuoteCard()
+
 });
 
 $('#register').on('submit',(e)=>{
+  console.log('test')
   e.preventDefault()
   let name = $('#nameReg').val()
   let email = $(`#emailReg`).val()
@@ -24,9 +30,11 @@ function registerUser(email,password,name){
     }
   })
     .done((token)=>{
+      console.log('ers')
       localStorage.setItem('token',token) 
     })
     .fail((err)=>{
+      console.log(err)
       let text = ''
       if(err.responseJSON.errArr){
         if(err.responseJSON.errArr.length>1){
@@ -120,7 +128,7 @@ function signOut() {
 function generateQuestion(){
   $.ajax({
       method: 'GET',
-      url: `https://official-joke-api.appspot.com/random_joke`
+      url: `https://localhost:3000/apis/joke`
   })
   .done((data) => {
     
@@ -133,6 +141,7 @@ function generateQuestion(){
             
               `
       $('#randomQuestion').prepend(html)
+      $('#home').hide()
   })
   .fail((err)=>{
       console.log(err)
@@ -173,3 +182,115 @@ $("#registerPage").click(function(){
 $("#loginButton").click(function(){
   $("#logout").show()
 });
+      $("#more").click(function(){
+          generateQuestion()
+          $("#answer").show()
+          $("#more").hide()
+          $('#randomQuestion').empty()
+      });
+
+
+function getBoredCard(){
+  console.log('masuks');
+  $('#bored').empty()
+  $.ajax({
+    method : 'get',
+    url : 'http://localhost:3000/apis/bored'
+  })
+    .done((data)=>{
+      console.log(data);
+      setBoredCard(data.activity,data.participants,data.price,data.type)
+    })
+    .fail((err)=>{
+      console.log(err);
+    })
+}
+
+
+function setBoredCard(activity,participant,price,type){
+  let newPrice = price*10
+  $('#bored').append(`
+  <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">${activity}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Type: ${type}</h6>
+        <p class="card-text">Participants: ${participant}</p>
+        <p class="card-text">Price: ${newPrice}</p>
+        <a id="getMoreBored" class="card-link" style="cursor: pointer">Get another activity</a>
+      </div>
+    </div>
+  `)
+  $('#getMoreBored').click(()=>{
+    getBoredCard()
+  })
+  
+}
+
+function getJokeCard(){
+  $('#joke').empty()
+  $.ajax({
+    method : 'get',
+    url : 'http://localhost:3000/apis/joke'
+  })
+    .done((data)=>{
+      console.log(data);
+      setJokeCard(data.setup,data.punchline)
+    })
+    .fail((err)=>{
+      console.log(err);
+    })
+}
+
+
+function setJokeCard(setup,punchline){
+  $('#joke').append(`
+  <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">${setup}</h5>
+        <button type="button" class="btn btn-primary btn-sm" id="reveal">Punchline!</button>
+        <h6 id="punchline" style="display:none">${punchline}</h6>
+        </br>
+        <a id="getMoreJoke" class="card-link" style="cursor:pointer">want to hear more joke?</a>
+      </div>
+    </div>
+  `)
+  $('#reveal').click(()=>{
+    $('#punchline').show()
+    $('#reveal').hide()
+  })
+  $('#getMoreJoke').click(()=>{
+    getJokeCard()
+  })
+}
+
+function getQuoteCard(){
+  $('#quote').empty()
+  $.ajax({
+    method : 'get',
+    url : 'http://localhost:3000/apis/quote'
+  })
+    .done((data)=>{
+      let detail = data.quotes[0] 
+      console.log();
+      setQuoteCard(detail.author,detail.body)
+    })
+    .fail((err)=>{
+      console.log(err);
+    })
+}
+
+
+function setQuoteCard(author,body){
+  $('#quote').append(`
+  <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">${body}</h5>
+        <p class="card-text">- ${author}</p>
+        <a id="getMoreQuote" class="card-link" style="cursor:pointer">get more quote</a>
+      </div>
+    </div>
+  `)
+  $('#getMoreQuote').click(()=>{
+    getQuoteCard()
+  })
+}
