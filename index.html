@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="google-signin-client_id" content="113110696070-ojveddu0haaikjej3o5tflff06uut0im.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  <title>A Bored Killer</title>
+</head>
+<body>
+
+  <div id="login">
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  </div>
+
+  <div id="logout">
+    <a href="#" onclick="signOut();">Sign out</a>
+  </div>
+
+
+  <div style="border: 1px solid black">
+    <h2>Register new user</h2>
+    <form id="register">
+      Username:<br>
+      <input type="text" placeholder="Input your username...." id="nameReg">
+      <br>
+      Email:<br>
+      <input type="text" placeholder="Input your email...." id="emailReg">
+      <br>
+      Password:<br>
+      <input type="password" placeholder="Input your password..." id="passReg">
+      <br><br>
+      <input type="submit" value="Submit">
+    </form> 
+  </div>
+
+  <div style="border: 1px solid black">
+      <h2>Login</h2>
+      <form id="loginStandard">
+        Email:<br>
+        <input type="text" placeholder="Input your email...." id="emailLog">
+        <br>
+        Password:<br>
+        <input type="password" placeholder="Input your password..." id="passLog">
+        <br><br>
+        <input type="submit" value="Submit">
+      </form> 
+    </div>
+
+
+
+  <script src="./main.js"></script>
+</body>
+</html>
