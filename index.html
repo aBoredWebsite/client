@@ -11,61 +11,106 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <title>Document</title>
 </head>
-<body style="background-image: linear-gradient(to top left, #33ccff 0%, #6666ff 100%);overflow: scroll">
+<body style="background-image: linear-gradient(to top left, #33ccff 0%, #6666ff 100%);overflow: scroll; width: 100%;">
         
-        
-        
-        <nav id="overlay" style="display: block;">
-            <div id="login">
-                <div class="g-signin2" data-onsuccess="onSignIn" style="margin-right:50px;"> </div>
-                <div id="logout">
-                  <a href="#" onclick="signOut();">Sign out</a>
-                </div>
+        <nav id="overlay" >  
+          
+            <div id="logout"> <div>
+                <button type="submit" class="btn btn-outline-light">
+                  <a href="#" style="color: white;" onclick="signOut();">Sign out</a>
+
+                </button>
+              </div>
             </div>
                     <a href="http://localhost:8080/#">
                         <img src="img/bored.png" class="bored">
                     </a>
-                </div>
-            </nav>
-            
-            <div class="container">
-                <header>
-                        <div style="border: 1px solid black">
-                                <h2>Register new user</h2>
-                                <form id="register">
-                                  Username:<br>
-                                  <input type="text" placeholder="Input your username...." id="nameReg">
-                                  <br>
-                                  Email:<br>
-                                  <input type="text" placeholder="Input your email...." id="emailReg">
-                                  <br>
-                                  Password:<br>
-                                  <input type="password" placeholder="Input your password..." id="passReg">
-                                  <br><br>
-                                  <input type="submit" value="Submit">
-                                </form> 
-                              </div>
-                            
-                              <div style="border: 1px solid black">
-                                  <h2>Login</h2>
-                                  <form id="loginStandard">
-                                    Email:<br>
-                                    <input type="text" placeholder="Input your email...." id="emailLog">
-                                    <br>
-                                    Password:<br>
-                                    <input type="password" placeholder="Input your password..." id="passLog">
-                                    <br><br>
-                                    <input type="submit" value="Submit">
-                                  </form> 
-                                </div>
-                            
-                </header>
+          </nav>
+            <!-- <div class="container">
+<!-- //---- login page ----// -->
 
+                <div id=class="row justify-content-center flex-cloumn align-items-center" style="width: 100%;">
+
+                    <div class="col"> 
+                      
+                         <div class="container">
+                        
+                            <div class='mx-auto d-flex flex-column align-items-center justify-content-center' style="height: 500px ; border-radius: 15px;">
+                                <form id="loginStandard">
+                                  <h2 style="color: white; text-align: center;margin-bottom: 2rem;font-size: 3rem;">You need to sign in first</h2>
+                                    <div class="form-row align-items-center" style="margin-bottom: 2rem;">
+                                        <div class="col-lrg-3 my-1">
+                                            <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                                            <div class="input-group">
+                                              <div class="input-group-prepend">
+                                                <div class="input-group-text">@</div>
+                                              </div>
+                                              <input id="emailLog" type="text" class="form-control"  placeholder="Insert email..">
+                                            </div>
+                                          </div>
+                                      <div class="col-lrg-3 my-1">
+                                        <label class="sr-only" for="inlineFormInputName" ">Name</label>
+                                        <input id="passLog" type="text" class="form-control" placeholder="Insert password..">
+                                      </div>
+                                      <div class="col-auto my-1">
+                                      </div>
+                                      <div>
+                                        <button type="submit" class="btn btn-primary" style="margin-left:10px;">Submit</button>
+                                      </div>
+                                      <div>
+                                          <button type="submit" class="btn btn-warning" style="margin-left:10px;">Register</button>
+                                      </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+
+                                      <hr width="100px" style="border: 1px dashed white" size="3"><h4 style="color: white;">or</h4><hr width="100px" style="border: 1px dashed white" size="3">
+                                    </div>
+                                    <br>
+                                    <h2 style="color: white; text-align: center;margin-bottom: 1rem;font-size: 3rem;">Have an google account?</h2>
+                                    <div id="login" style="margin-left:40%; margin-top: 1%;">
+                                      <br>
+                                        <div class="g-signin2" data-onsuccess="onSignIn"> </div>
+                                    </div>
+                                  </form>
+                            </div>
+                    </div>
+
+            
+                </div>       
+    
+            </div>
+
+<!-- //---- register ----// -->
+            <div id= "register" class="row justify-content-center flex-cloumn align-items-center" style="height:100vh;">
+                
+                <div class="col">    
+                  <div class='mx-auto d-flex flex-column align-items-center justify-content-center' style="height: 500px; width: 1000px ;  background-color:white; border-radius: 15px;">
+                      <h2 style="color:grey; text-align: center;margin-bottom: 2rem;font-size: 3rem;">Register</h2>
+                      <form style="width: 70%;">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">username</label>
+                            <input id='nameReg' type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">email</label>
+                            <input id='emailReg' type="password" class="form-control" id="exampleInputPassword1" placeholder="email">
+                          </div>
+                          <div class="form-group">
+                              <label for="exampleInputPassword1">password</label>
+                              <input id='passReg' type="password" class="form-control" id="exampleInputPassword1" placeholder="password">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                </div>
+              
+            </div>       
+        </div>
   <!-- //---- home quiz ----// -->
 
-            <div id=home class="container-fluid" );">
+            <div id=home class="container-fluid";">
 
-                    <div class="row justify-content-center flex-cloumn align-items-center" style="height:100vh;">
+                    <div class="row justify-content-center flex-cloumn align-items-center" style="height: calc(100vh - 500px); display: none"">
                         
                             <div class="col">    
                                 <div class='mx-auto d-flex flex-column align-items-center justify-content-center' style="height: 300px; width: 60%;">
@@ -81,8 +126,7 @@
                 
     <!-- //---- random question garing page ----// -->
  
-                <div class="row justify-content-center flex-cloumn align-items-center" style="height:100vh;">
-
+                <div class="row justify-content-center flex-cloumn align-items-center" style="height:100vh; ; display: none"">
                         <div class="col">    
                                 <div class='mx-auto d-flex flex-column align-items-center justify-content-center' style="height: 500px; width: 1000px ;  background-color:white; border-radius: 15px;">
                                     <div id = randomQuestion></div>
@@ -95,9 +139,8 @@
                         </div>
 
                 
-            </div>       
- 
-        </div>
+                    </div>       
+                </div>
 
     <!-- //---- trivia page ----// -->
 
