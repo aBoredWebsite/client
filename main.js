@@ -14,13 +14,20 @@ $(document).ready(function(){
 
 
 function loginPage(){
-  // $('#logout').hide()
+  $('#logout').hide()
+  $('#login').show()
   $('#reg').hide()
   $('#game').hide()
   $('#home').hide()
+  $('#game-joke').hide()
 }
 
 function homePage(){
+  // getBoredCard()
+  // getJokeCard()
+  // getQuoteCard()
+  // $('#game-joke').show()
+  // $('#game').show()
   $('#reg').hide()
   $('#logout').show()
   $('#login').hide()
@@ -90,6 +97,7 @@ function loginUser(email,password){
   })
     .done((token)=>{
       localStorage.setItem('token',token) 
+      homePage()
     })
     .fail((err)=>{
 
@@ -203,12 +211,21 @@ $("#registerPage").click(function(){
 $("#loginButton").click(function(){
   $("#logout").show()
 });
-      $("#more").click(function(){
-          generateQuestion()
-          $("#answer").show()
-          $("#more").hide()
-          $('#randomQuestion').empty()
-      });
+
+$("#logout").click(function(){
+  // $("#logout").show()
+  localStorage.removeItem('token')
+  loginPage()
+});
+
+
+
+$("#more").click(function(){
+    generateQuestion()
+    $("#answer").show()
+    $("#more").hide()
+    $('#randomQuestion').empty()
+});
 
 
       
