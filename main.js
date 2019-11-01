@@ -141,25 +141,35 @@ function generateQuestion(){
 
 
 
-       let counter = 0
-      $("#answer").click(function(){
-          $("#punchline").show()
-          $("#answer").hide()
-          $("#more").show()
-          // let counter = $("#true").text()
-          // console.log(counter)
-          counter++
-          $("#score").empty()
-          // $("#true").text(counter)
-          $("#score").append(`
-              <p>${counter}</p>
-          `)
+  let counter = 0
+$("#answer").click(function(){
+    $("#punchline").show()
+    $("#answer").hide()
+    $("#more").show()
+    // let counter = $("#true").text()
+    // console.log(counter)
+    counter++
+    $("#score").empty()
+    // $("#true").text(counter)
+    $("#score").append(`
+        <p>${counter}</p>
+    `)
 
-      });
+});
 
-      $("#more").click(function(){
-          generateQuestion()
-          $("#answer").show()
-          $("#more").hide()
-          $('#randomQuestion').empty()
-      });
+$("#more").click(function(){
+    generateQuestion()
+    $("#answer").show()
+    $("#more").hide()
+    $('#randomQuestion').empty()
+});
+
+$("#registerPage").click(function(){
+  $("#register").show()
+  $("#login").hide()
+  $('#randomQuestion').empty()
+});
+
+$("#loginButton").click(function(){
+  $("#logout").show()
+});

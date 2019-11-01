@@ -17,7 +17,7 @@
         
         <nav id="overlay" >  
           
-            <div id="logout"> <div>
+            <div id="logout" style="display: none;"> <div>
                 <button type="submit" class="btn btn-outline-light">
                   <a href="#" style="color: white;" onclick="signOut();">Sign out</a>
 
@@ -31,13 +31,13 @@
             <!-- <div class="container">
 <!-- //---- login page ----// -->
 
-                <div id=class="row justify-content-center flex-cloumn align-items-center" style="width: 100%;">
+                <div id="login" class=row justify-content-center flex-cloumn align-items-center" style="width: 100%;">
 
                     <div class="col"> 
                       
                          <div class="container">
                         
-                            <div class='mx-auto d-flex flex-column align-items-center justify-content-center' style="height: 500px ; border-radius: 15px;">
+                            <div class='mx-auto d-flex flex-column align-items-center justify-content-center' style="height: 500px; margin-top:10%; border-radius: 15px;">
                                 <form id="loginStandard">
                                   <h2 style="color: white; text-align: center;margin-bottom: 2rem;font-size: 3rem;">You need to sign in first</h2>
                                     <div class="form-row align-items-center" style="margin-bottom: 2rem;">
@@ -57,10 +57,10 @@
                                       <div class="col-auto my-1">
                                       </div>
                                       <div>
-                                        <button type="submit" class="btn btn-primary" style="margin-left:10px;">Submit</button>
+                                        <button id ="loginButton" ="submit" class="btn btn-primary" style="margin-left:10px;">Submit</button>
                                       </div>
                                       <div>
-                                          <button type="submit" class="btn btn-warning" style="margin-left:10px;">Register</button>
+                                          <button id="registerPage" type="submit" class="btn btn-warning" style="margin-left:10px;">Register</button>
                                       </div>
                                     </div>
                                     <br>
@@ -84,7 +84,8 @@
             </div>
 
 <!-- //---- register ----// -->
-            <div id= "register" class="row justify-content-center flex-cloumn align-items-center" style="height:100vh;">
+
+            <div id= "register" class="row justify-content-center flex-cloumn align-items-center" style="height:70vh; display: none;">
                 
                 <div class="col">    
                   <div class='mx-auto d-flex flex-column align-items-center justify-content-center' style="height: 500px; width: 1000px ;  background-color:white; border-radius: 15px;">
@@ -108,6 +109,7 @@
               
             </div>       
         </div>
+
   <!-- //---- home quiz ----// -->
 
             <div id=home class="container-fluid";">
@@ -152,27 +154,58 @@
 
     <!-- //---- trivia page ----// -->
 
-      <div class="container">
-        <div id="game">
-          <h1 id="question">What is the answer for this Question?</h1>
-          <div class="choice-container" id="0">
-            <p class="choice-prefix">A</p>
-            <p class="choice-text" value="0">Choice</p>
-          </div>
-          <div class="choice-container" id="1">
-            <p class="choice-prefix">B</p>
-            <p class="choice-text" value="1">Choice</p>
-          </div>
-          <div class="choice-container" id="2">
-            <p class="choice-prefix">C</p>
-            <p class="choice-text" value="2">Choice</p>
-          </div>
-          <div class="choice-container" id="3">
-            <p class="choice-prefix">D</p>
-            <p class="choice-text" value="3">Choice</p>
-          </div>
+    <div id="game" class="container-fluid"; style="display: none;"">
+
+        <div class="row justify-content-center flex-cloumn align-items-center" style="height:100vh;">
+            
+                <div class="col">    
+                    <div class='mx-auto d-flex flex-column align-items-center justify-content-center' style="height: 300px; width: 60%;">
+
+                            <h2 id ="question" style="color: rgb(255, 255, 255); text-align: center;margin-bottom: 3rem;font-size: 3rem;">What is the answer for this Question?</h2>
+                            <div class="choice-container" id="0" >
+                                <p class="choice-prefix">A.</p>
+                                <p class="choice-text" value="0"></p>
+                              </div>
+
+                            <div class="choice-container" id="1">
+                                <p class="choice-prefix">B.</p>
+                                <p class="choice-text" value="1"></p>
+                              </div>
+
+                            <div class="choice-container" id="2">
+                                <p class="choice-prefix">C.</p>
+                                <p class="choice-text" value="2"></p>
+                              </div>
+
+                            <div class="choice-container" id="3">
+                                <p class="choice-prefix">D.</p>
+                                <p class="choice-text" value="3"></p>
+                              </div>
+                    </div>
+                </div>
+
         </div>
+  </div>
+   
+  <!-- //---- home quiz ----// -->
+
+  <div id="home" class="container-fluid";">
+
+      <div class="row justify-content-center flex-cloumn align-items-center" style="height: calc(100vh - 500px);">
+          
+              <div id = "scorePage" class="col" style="display: none;">    
+                  <div class='mx-auto d-flex flex-column align-items-center justify-content-center' style="height: 300px; width: 60%;">
+                          <h2 style="color: white; text-align: center;margin-bottom: 3rem;font-size: 3rem;">Your Scores</h2>
+                          
+                              <a id = "scoreQuiz" href="#" class="btn btn-outline-light" style="padding: 0.375rem 2.75rem; margin:10px;border-radius: 2.25rem;font-size: 1.3rem;line-height: 2.5;width: 200px; "></a>
+                          
+                  </div>
+              </div>
+
       </div>
+  </div>
+
+
 
     </body>
 
@@ -181,5 +214,8 @@
 
     <script src="main.js"></script>
     <script src="game.js"></script>
+
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 </html>
