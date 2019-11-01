@@ -172,4 +172,6 @@ $("#registerPage").click(function(){
 
 $("#loginButton").click(function(){
   $("#logout").show()
+  $("#game").show()
+  $("#login").hide()
 });
