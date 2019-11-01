@@ -13,6 +13,18 @@ $(document).ready(function(){
 });
 
 
+// $('#logo').click(()=>{
+
+//   let games = ['#game-joke','#game-trivia','#game-quotes','#game-bored']
+ 
+//   let output = Math.floor(Math.random()*4)
+ 
+//    $(`${games[output]}`).show()
+//    console.log(games[output])
+//    console.log(output)  
+ 
+//   })
+
 function loginPage(){
   $('#logout').hide()
   $('#login').show()
@@ -23,11 +35,11 @@ function loginPage(){
 }
 
 function homePage(){
-  // getBoredCard()
-  // getJokeCard()
+  getBoredCard()
+  getJokeCard()
   // getQuoteCard()
-  // $('#game-joke').show()
-  // $('#game').show()
+  $('#game-joke').show()
+  $('#game').show()
   $('#reg').hide()
   $('#logout').show()
   $('#login').hide()
