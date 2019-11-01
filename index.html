@@ -5,7 +5,9 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="quiz.css">
-    <meta name="google-signin-client_id" content="685435601411-5hvicqhiv2pvje3osnn0tneodbooh2oe.apps.googleusercontent.com">
+    <!-- <meta name="google-signin-client_id" content="685435601411-5hvicqhiv2pvje3osnn0tneodbooh2oe.apps.googleusercontent.com"> -->
+    <meta name="google-signin-client_id" content="113110696070-ojveddu0haaikjej3o5tflff06uut0im.apps.googleusercontent.com">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -14,20 +16,17 @@
     <title>Document</title>
 </head>
 <body style="background-image: linear-gradient(to top left, #33ccff 0%, #6666ff 100%);overflow: scroll; width: 100%;">
-        
+      
         <nav id="overlay" >  
-          
-            <div id="logout" style="display: none;"> <div>
-                <button type="submit" class="btn btn-outline-light">
-                  <a href="#" style="color: white;" onclick="signOut();">Sign out</a>
-
-                </button>
-              </div>
-            </div>
-                    <a href="http://localhost:8080/#">
-                        <img src="img/bored.png" class="bored">
-                    </a>
-          </nav>
+          <div id="logout" > 
+            <button type="submit" class="btn btn-outline-light">
+              <a href="#" style="color: white;" onclick="signOut();">Sign out</a>
+            </button>
+          </div>
+          <a href="http://localhost:8080/#">
+              <img src="img/bored.png" class="bored">
+          </a>
+        </nav>
             <!-- <div class="container">
 <!-- //---- login page ----// -->
 
@@ -57,24 +56,25 @@
                                       <div class="col-auto my-1">
                                       </div>
                                       <div>
-                                        <button id ="loginButton" ="submit" class="btn btn-primary" style="margin-left:10px;">Submit</button>
+                                        <button id ="loginButton" type="submit" class="btn btn-primary" style="margin-left:10px;">Submit</button>
                                       </div>
-                                      <div>
-                                          <button id="registerPage" type="submit" class="btn btn-warning" style="margin-left:10px;">Register</button>
-                                      </div>
+                                      
                                     </div>
                                     <br>
                                     <div class="row">
-
                                       <hr width="100px" style="border: 1px dashed white" size="3"><h4 style="color: white;">or</h4><hr width="100px" style="border: 1px dashed white" size="3">
                                     </div>
                                     <br>
-                                    <h2 style="color: white; text-align: center;margin-bottom: 1rem;font-size: 3rem;">Have an google account?</h2>
+                                    <h2 style="color: white; text-align: center;margin-bottom: 1rem;font-size: 3rem;">Have a google account?</h2>
                                     <div id="login" style="margin-left:40%; margin-top: 1%;">
                                       <br>
                                         <div class="g-signin2" data-onsuccess="onSignIn"> </div>
                                     </div>
                                   </form>
+                                  <h4 id="rrg">If you do not have an account, please register first</h4>
+                                  <div>
+                                      <button id="registerPage" class="btn btn-warning" style="margin-left:10px;">Register</button>
+                                  </div>
                             </div>
                     </div>
 
@@ -85,36 +85,34 @@
 
 <!-- //---- register ----// -->
 
-            <div id= "register" class="row justify-content-center flex-cloumn align-items-center" style="height:70vh; display: none;">
-                
+            <div id="reg" class="row justify-content-center flex-cloumn align-items-center" style="height:70vh;">
                 <div class="col">    
                   <div class='mx-auto d-flex flex-column align-items-center justify-content-center' style="height: 500px; width: 1000px ;  background-color:white; border-radius: 15px;">
                       <h2 style="color:grey; text-align: center;margin-bottom: 2rem;font-size: 3rem;">Register</h2>
-                      <form style="width: 70%;">
+                      <form style="width: 70%;" id="registerForm">
                           <div class="form-group">
-                            <label for="exampleInputEmail1">username</label>
-                            <input id='nameReg' type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+                            <label for="nameReg">username</label>
+                            <input id='nameReg' type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter username">
                           </div>
                           <div class="form-group">
-                            <label for="exampleInputPassword1">email</label>
-                            <input id='emailReg' type="password" class="form-control" id="exampleInputPassword1" placeholder="email">
+                            <label for="emailReg">email</label>
+                            <input id='emailReg' type="email" class="form-control"  placeholder="email">
                           </div>
                           <div class="form-group">
-                              <label for="exampleInputPassword1">password</label>
-                              <input id='passReg' type="password" class="form-control" id="exampleInputPassword1" placeholder="password">
+                              <label for="passReg">password</label>
+                              <input id='passReg' type="password" class="form-control" placeholder="password">
                           </div>
                           <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
-                </div>
-              
-            </div>       
-        </div>
+                    </div>
+                </div>       
+            </div>
 
   <!-- //---- home quiz ----// -->
             <div id="home" class="container-fluid";>
 
 
-                    <div class="row justify-content-center flex-cloumn align-items-center" style="height: calc(100vh - 500px); display: none"">
+                    <div class="row justify-content-center flex-cloumn align-items-center" style="height: calc(100vh - 500px)">
                         
                             <div class="col">    
                                 <div class='mx-auto d-flex flex-column align-items-center justify-content-center' style="height: 300px; width: 60%;">
@@ -130,7 +128,7 @@
 
     <!-- //---- random question garing page ----// -->
  
-                <div class="row justify-content-center flex-cloumn align-items-center" style="height:100vh; ; display: none"">
+                <!-- <div class="row justify-content-center flex-cloumn align-items-center" style="height:100vh;">
                         <div class="col">    
                                 <div class='mx-auto d-flex flex-column align-items-center justify-content-center' style="height: 500px; width: 1000px ;  background-color:white; border-radius: 15px;">
                                     <div id = randomQuestion></div>
@@ -140,17 +138,17 @@
                                         <h5 id="score"></h5>
                                     </div>
                                 </div>
-                        </div>
+                        </div> -->
 
                 
-                    </div>       
-                </div>
+                    <!-- </div>        -->
+                <!-- </div> -->
 
     <!-- //---- trivia page ----// -->
 
-            </div>
+            <!-- </div> -->
 
-        </div>
+        <!-- </div> -->
 
     <!-- //---- trivia page ----// -->
 
@@ -164,22 +162,22 @@
                             <h2 id ="question" style="color: rgb(255, 255, 255); text-align: center;margin-bottom: 3rem;font-size: 3rem;">What is the answer for this Question?</h2>
                             <div class="choice-container" id="0" >
                                 <p class="choice-prefix">A.</p>
-                                <p class="choice-text" value="0"></p>
+                                <p class="choice-text" id="choice0"></p>
                               </div>
 
                             <div class="choice-container" id="1">
                                 <p class="choice-prefix">B.</p>
-                                <p class="choice-text" value="1"></p>
+                                <p class="choice-text" id="choice1"></p>
                               </div>
 
                             <div class="choice-container" id="2">
                                 <p class="choice-prefix">C.</p>
-                                <p class="choice-text" value="2"></p>
+                                <p class="choice-text" id="choice2"></p>
                               </div>
 
                             <div class="choice-container" id="3">
                                 <p class="choice-prefix">D.</p>
-                                <p class="choice-text" value="3"></p>
+                                <p class="choice-text" id="choice3"></p>
                               </div>
                     </div>
                 </div>

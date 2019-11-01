@@ -1,14 +1,9 @@
-const choices = Array.from(document.getElementsByClassName('choice-container'))
-
-let questions = null
-
 $.ajax({
   url: 'http://localhost:3000/apis/trivia',
   method: 'get'
 })
 .done(response => {
-  // console.log(response)
-  questions = response
+  let questions = response  
   let questionNumber = questions.results.length
   let point = 0
   let correctIndex = null
@@ -25,8 +20,10 @@ $.ajax({
       }
     }
     for(let i=0 ; i<placement.length ; i++){
-      document.getElementById('question').innerHTML = questions.results[0].question
-      document.querySelector(`[value="${i}"]`).innerText = placement[i]
+      // document.getElementById('question').innerHTML = questions.results[0].question
+      // document.querySelector(`[value="${i}"]`).innerText = placement[i]
+      $("#question").html(questions.results[0].question)
+      $(`#choice${i}`).text(placement[i])
     }
   }
   generateQuestion()
@@ -35,7 +32,8 @@ $.ajax({
     
       $("#game").hide()
       $("#scorePage").show()
-      document.getElementById('scoreQuiz').innerHTML = `${point}/10`
+      $('#scoreQuiz').html(`${point}/10`) 
+      // document.getElementById('scoreQuiz').innerHTML = `${point}/10`
     Swal.fire(
       'Good job!',
       'You have finish this quiz!',
@@ -44,8 +42,8 @@ $.ajax({
     $('#game').hide()
   }
 
-  choices.forEach(choice => {
-    choice.addEventListener('click', e => {
+  let choices = $(".choice-container")
+    choices.on('click', e => {
       // $(`#${e.target.id}`).css({
       //   "background-color" : "black"
       // })
@@ -91,7 +89,7 @@ $.ajax({
         //   "background-color" : "black"
         // })
       })
-  })
+ 
 })
 .fail(err => {
   console.log(err)
