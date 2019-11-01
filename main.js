@@ -1,18 +1,35 @@
 $(document).ready(function(){
-  $("#button").click(function(){
-      $("#home").animate({
-          height: 'toggle',
-      });
-      $("#question1").show()
-  });
 
-  getBoredCard()
-  getJokeCard()
-  getQuoteCard()
+  if (localStorage.getItem('token')){
+    homePage() // isinya game dan cards
+  } else {
+    loginPage() // isinya login & register
+  }
+
+  // getBoredCard()
+  // getJokeCard()
+  // getQuoteCard()
 
 });
 
-$('#register').on('submit',(e)=>{
+
+function loginPage(){
+  // $('#logout').hide()
+  $('#reg').hide()
+  $('#game').hide()
+  $('#home').hide()
+}
+
+function homePage(){
+  $('#reg').hide()
+  $('#logout').show()
+  $('#login').hide()
+  $('#home').show()
+}
+
+
+
+$('#registerForm').on('submit',(e)=>{
   console.log('test')
   e.preventDefault()
   let name = $('#nameReg').val()
@@ -34,6 +51,7 @@ function registerUser(email,password,name){
       localStorage.setItem('token',token) 
     })
     .fail((err)=>{
+      console.log('--------------------->>>>>>>');
       console.log(err)
       let text = ''
       if(err.responseJSON.errArr){
@@ -74,6 +92,8 @@ function loginUser(email,password){
       localStorage.setItem('token',token) 
     })
     .fail((err)=>{
+
+      console.log('login===-=-=-=-=-=');
       let text = ''
       if(err.responseJSON.errArr){
         if(err.responseJSON.errArr.length>1){
@@ -106,6 +126,7 @@ function onSignIn(googleUser) {
   })
     .done((token)=>{
       localStorage.setItem('token',token)
+      homePage()
     })
     .fail((err)=>{
       Swal.fire({
@@ -174,9 +195,9 @@ $("#more").click(function(){
 });
 
 $("#registerPage").click(function(){
-  $("#register").show()
+  $("#reg").show()
   $("#login").hide()
-  $('#randomQuestion').empty()
+  // $('#randomQuestion').empty()
 });
 
 $("#loginButton").click(function(){
