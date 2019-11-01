@@ -3,7 +3,7 @@ const choices = Array.from(document.getElementsByClassName('choice-container'))
 let questions = null
 
 $.ajax({
-  url: 'https://opentdb.com/api.php?amount=10&type=multiple',
+  url: 'http://localhost:3000/apis/trivia',
   method: 'get'
 })
 .done(response => {
@@ -35,12 +35,13 @@ $.ajax({
     
       $("#game").hide()
       $("#scorePage").show()
-      // $(`#${e.target.id}`).css({
-      //   "background-color" : "red"
-      // })
       document.getElementById('scoreQuiz').innerHTML = `${point}/10`
-  
-    console.log(point)
+    Swal.fire(
+      'Good job!',
+      'You have finish this quiz!',
+      'success'
+    )
+    $('#game').hide()
   }
 
   choices.forEach(choice => {
